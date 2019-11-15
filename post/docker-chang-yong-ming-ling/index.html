@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>docker常用命令 | Gridea</title>
 <meta name="description" content="温故而知新" />
-<link rel="shortcut icon" href="https://insistandinsist.github.io/favicon.ico?v=1573746816407">
+<link rel="shortcut icon" href="https://insistandinsist.github.io/favicon.ico?v=1573780274845">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://insistandinsist.github.io/styles/main.css">
@@ -20,7 +20,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://insistandinsist.github.io">
-  <img class="avatar" src="https://insistandinsist.github.io/images/avatar.png?v=1573746816407" alt="">
+  <img class="avatar" src="https://insistandinsist.github.io/images/avatar.png?v=1573780274845" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -98,7 +98,10 @@
 <pre><code>docker run -d -p 1521:1521 --name oracle_11g registry.aliyuncs.com/helowin/oracle_11g
 </code></pre>
 <h4 id="3进入容器shell">3.进入容器shell</h4>
-<pre><code>docker exec -it oracle_11g bash</code></pre>
+<pre><code>docker exec -it oracle_11g bash
+</code></pre>
+<h4 id="4运行">4.运行</h4>
+<pre><code>docker start oracle_11g</code></pre>
 
               </div>
               <div class="toc-container">
@@ -112,6 +115,7 @@
 <li><a href="#1%E6%8B%89%E9%95%9C%E5%83%8F">1.拉镜像</a></li>
 <li><a href="#2%E5%88%9B%E5%BB%BA%E5%AE%B9%E5%99%A8%E4%BF%A1%E6%81%AF">2.创建容器信息</a></li>
 <li><a href="#3%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8shell">3.进入容器shell</a></li>
+<li><a href="#4%E8%BF%90%E8%A1%8C">4.运行</a></li>
 </ul>
 </li>
 </ul>
