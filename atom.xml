@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://insistandinsist.github.io</id>
     <title>moofie&apos;s blog</title>
-    <updated>2019-11-28T09:20:13.764Z</updated>
+    <updated>2019-11-28T09:25:41.648Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://insistandinsist.github.io"/>
     <link rel="self" href="https://insistandinsist.github.io/atom.xml"/>
@@ -19,7 +19,7 @@
 <li>
 <h4 id="改密码">改密码</h4>
 <p>在mysql 8前有效</p>
-<pre><code>  set password for 用户名@localhost=password('新密码');
+<pre><code>  set password for 'root'@'localhost'=password('新密码');
 </code></pre>
 <p>mysql 8及以后的代码</p>
 <pre><code>  use mysql;
@@ -45,17 +45,27 @@
         <link href="https://insistandinsist.github.io/post/docker-chang-yong-ming-ling">
         </link>
         <updated>2019-11-14T15:26:23.000Z</updated>
-        <content type="html"><![CDATA[<h4 id="1拉镜像">1.拉镜像</h4>
+        <content type="html"><![CDATA[<ul>
+<li>
+<h4 id="拉镜像">拉镜像</h4>
 <pre><code>docker pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g
 </code></pre>
-<h4 id="2创建容器信息">2.创建容器信息</h4>
+</li>
+<li>
+<h4 id="创建容器信息">创建容器信息</h4>
 <pre><code>docker run -d -p 1521:1521 --name oracle_11g registry.aliyuncs.com/helowin/oracle_11g
 </code></pre>
-<h4 id="3进入容器shell">3.进入容器shell</h4>
+</li>
+<li>
+<h4 id="进入容器shell">进入容器shell</h4>
 <pre><code>docker exec -it oracle_11g bash
 </code></pre>
-<h4 id="4运行">4.运行</h4>
+</li>
+<li>
+<h4 id="运行">运行</h4>
 <pre><code>docker start oracle_11g</code></pre>
+</li>
+</ul>
 ]]></content>
     </entry>
     <entry>
