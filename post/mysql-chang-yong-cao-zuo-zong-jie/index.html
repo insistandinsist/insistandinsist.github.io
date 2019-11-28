@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>moofie&#39;s blog</title>
+<title>mysql常用操作总结 | moofie&#39;s blog</title>
 <meta name="description" content="">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -91,64 +91,50 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://insistandinsist.github.io/post/mysql-chang-yong-cao-zuo-zong-jie">
-                  <h2 class="post-title">mysql常用操作总结</h2>
-                </a>
-                <div class="post-date">
-                  2019-11-28
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
+          <div class="post-detail">
+            <h2 class="post-title">mysql常用操作总结</h2>
+            <div class="post-date">2019-11-28</div>
+            
+            <div class="post-content">
+              <ul>
+<li>
+<h4 id="改密码">改密码</h4>
+<p>在mysql 8前有效</p>
+<pre><code>  set password for 用户名@localhost=password('新密码');
+</code></pre>
+<p>mysql 8及以后的代码</p>
+<pre><code>  use mysql;
+  alter user 'root'@'localhost' identiffied with mysql_native_password by '新密码';
+  flush privileges;
+</code></pre>
+<p>原因是：</p>
+<blockquote>
+<p>在之前，mysql的密码认证插件是&quot;mysql_native_password&quot;,现在使用的是&quot;caching_sha2_password&quot;</p>
+</blockquote>
+</li>
+<li>
+<h4 id="导入sql文件">导入sql文件</h4>
+<p>若使用navicat导入文件失败，可以使用以下代码</p>
+<pre><code>  mysql -uroot -p 数据库名 &lt; xxx.sql</code></pre>
+</li>
+</ul>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
                 <a href="https://insistandinsist.github.io/post/docker-chang-yong-ming-ling">
-                  <h2 class="post-title">docker常用命令</h2>
+                  <h3 class="post-title">
+                    docker常用命令
+                  </h3>
                 </a>
-                <div class="post-date">
-                  2019-11-14
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
               </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://insistandinsist.github.io/post/hello-gridea">
-                  <h2 class="post-title">Hello Gridea</h2>
-                </a>
-                <div class="post-date">
-                  2018-12-12
-                </div>
-                <div class="post-abstract">
-                  <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+            
 
-                </div>
-              </div>
-              
-                <a class="right" href="https://insistandinsist.github.io/post/hello-gridea">
-                  <div class="feature-container" style="background-image: url('https://insistandinsist.github.io/post-images/hello-gridea.png')">
-                  </div>
-                </a>
-              
-            </article>
-          
+            
 
-          <div class="pagination-container">
-  
-  
-</div>
+          </div>
 
         </div>
       </div>

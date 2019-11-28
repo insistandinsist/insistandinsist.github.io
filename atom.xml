@@ -2,13 +2,43 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://insistandinsist.github.io</id>
     <title>moofie&apos;s blog</title>
-    <updated>2019-11-18T09:34:38.579Z</updated>
+    <updated>2019-11-28T09:20:13.764Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://insistandinsist.github.io"/>
     <link rel="self" href="https://insistandinsist.github.io/atom.xml"/>
     <logo>https://insistandinsist.github.io/images/avatar.png</logo>
     <icon>https://insistandinsist.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, moofie&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[mysql常用操作总结]]></title>
+        <id>https://insistandinsist.github.io/post/mysql-chang-yong-cao-zuo-zong-jie</id>
+        <link href="https://insistandinsist.github.io/post/mysql-chang-yong-cao-zuo-zong-jie">
+        </link>
+        <updated>2019-11-28T08:36:06.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>
+<h4 id="改密码">改密码</h4>
+<p>在mysql 8前有效</p>
+<pre><code>  set password for 用户名@localhost=password('新密码');
+</code></pre>
+<p>mysql 8及以后的代码</p>
+<pre><code>  use mysql;
+  alter user 'root'@'localhost' identiffied with mysql_native_password by '新密码';
+  flush privileges;
+</code></pre>
+<p>原因是：</p>
+<blockquote>
+<p>在之前，mysql的密码认证插件是&quot;mysql_native_password&quot;,现在使用的是&quot;caching_sha2_password&quot;</p>
+</blockquote>
+</li>
+<li>
+<h4 id="导入sql文件">导入sql文件</h4>
+<p>若使用navicat导入文件失败，可以使用以下代码</p>
+<pre><code>  mysql -uroot -p 数据库名 &lt; xxx.sql</code></pre>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[docker常用命令]]></title>
         <id>https://insistandinsist.github.io/post/docker-chang-yong-ming-ling</id>
