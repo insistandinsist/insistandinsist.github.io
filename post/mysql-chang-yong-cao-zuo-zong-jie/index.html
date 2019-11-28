@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://insistandinsist.github.io/favicon.ico?v=1574933664622">
+<link rel="shortcut icon" href="https://insistandinsist.github.io/favicon.ico?v=1574933701631">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://insistandinsist.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://insistandinsist.github.io">
-        <img src="https://insistandinsist.github.io/images/avatar.png?v=1574933664622" class="site-logo">
+        <img src="https://insistandinsist.github.io/images/avatar.png?v=1574933701631" class="site-logo">
         <h1 class="site-title">moofie&#39;s blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -99,22 +99,19 @@
               <ul>
 <li>
 <h4 id="改密码">改密码</h4>
-</li>
-</ul>
-<hr>
-<pre><code>在mysql 8前有效
-
-    set password for 'root'@'localhost'=password('新密码');
-mysql 8及以后的代码
-
-    use mysql;
-    alter user 'root'@'localhost' identiffied with mysql_native_password by '新密码';
-    flush privileges;
-
-原因是：
-&gt;在之前，mysql的密码认证插件是&quot;mysql_native_password&quot;,现在使用的是&quot;caching_sha2_password&quot;
+<p>在mysql 8前有效</p>
+<pre><code>  set password for 'root'@'localhost'=password('新密码');
 </code></pre>
-<ul>
+<p>mysql 8及以后的代码</p>
+<pre><code>  use mysql;
+  alter user 'root'@'localhost' identiffied with mysql_native_password by '新密码';
+  flush privileges;
+</code></pre>
+<p>原因是：</p>
+<blockquote>
+<p>在之前，mysql的密码认证插件是&quot;mysql_native_password&quot;,现在使用的是&quot;caching_sha2_password&quot;</p>
+</blockquote>
+</li>
 <li>
 <h4 id="导入sql文件">导入sql文件</h4>
 <p>若使用navicat导入文件失败，可以使用以下代码</p>
