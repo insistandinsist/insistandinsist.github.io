@@ -1,21 +1,108 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://insistandinsist.github.io</id>
-    <title>moofie&apos;s blog</title>
-    <updated>2020-02-04T03:17:08.519Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://insistandinsist.github.io"/>
-    <link rel="self" href="https://insistandinsist.github.io/atom.xml"/>
-    <logo>https://insistandinsist.github.io/images/avatar.png</logo>
-    <icon>https://insistandinsist.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, moofie&apos;s blog</rights>
-    <entry>
-        <title type="html"><![CDATA[在MacBook上安装双系统]]></title>
-        <id>https://insistandinsist.github.io/post/zai-macbook-shang-an-zhuang-shuang-xi-tong</id>
-        <link href="https://insistandinsist.github.io/post/zai-macbook-shang-an-zhuang-shuang-xi-tong">
-        </link>
-        <updated>2020-02-04T03:09:33.000Z</updated>
-        <content type="html"><![CDATA[<ul>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>在MacBook上安装双系统 | moofie&#39;s blog</title>
+<meta name="description" content="">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://insistandinsist.github.io/favicon.ico?v=1580786221736">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://insistandinsist.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://insistandinsist.github.io">
+        <img src="https://insistandinsist.github.io/images/avatar.png?v=1580786221736" class="site-logo">
+        <h1 class="site-title">moofie&#39;s blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://insistandinsist.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">在MacBook上安装双系统</h2>
+            <div class="post-date">2020-02-04</div>
+            
+            <div class="post-content">
+              <ul>
 <li>
 <h4 id="寻找合适的iso镜像文件">寻找合适的iso镜像文件</h4>
 <p>推荐到<a href="https://msdn.itellyou.cn/">msdn,I Tell You</a>上找小于4g的win10镜像。<br>
@@ -44,122 +131,84 @@
 </blockquote>
 </li>
 </ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[oracle常用总结]]></title>
-        <id>https://insistandinsist.github.io/post/oracle-chang-yong-zong-jie</id>
-        <link href="https://insistandinsist.github.io/post/oracle-chang-yong-zong-jie">
-        </link>
-        <updated>2019-12-26T03:08:17.000Z</updated>
-        <content type="html"><![CDATA[<ul>
-<li>
-<h4 id="使用变量">使用变量</h4>
-<p>若sql需要频繁使用到同一个变量：</p>
-<pre><code>select * from table where a='&amp;a';
-</code></pre>
-<p>此时plsql会弹出输入框，输入a的值后继续查询</p>
-</li>
-<li>
-<h4 id="替换列内部分数据">替换列内部分数据</h4>
-<pre><code>update table1 t
-set t.col1=replace((select col1 from table1 a where a.主键列=t.主键列) , '/' , '-' )
---where 条件查询放在后面
-</code></pre>
-<p>这么写的原因是replace的参数1必须为一条数据?</p>
-</li>
-</ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[mysql常用操作总结]]></title>
-        <id>https://insistandinsist.github.io/post/mysql-chang-yong-cao-zuo-zong-jie</id>
-        <link href="https://insistandinsist.github.io/post/mysql-chang-yong-cao-zuo-zong-jie">
-        </link>
-        <updated>2019-11-28T08:36:06.000Z</updated>
-        <content type="html"><![CDATA[<ul>
-<li>
-<h4 id="改密码">改密码</h4>
-<p>在mysql 8前有效</p>
-<pre><code>  set password for 'root'@'localhost'=password('新密码');
-</code></pre>
-<p>mysql 8及以后的代码</p>
-<pre><code>  use mysql;
-  alter user 'root'@'localhost' identified with mysql_native_password by '新密码';
-  flush privileges;
-</code></pre>
-<p>原因是：</p>
-<blockquote>
-<p>在之前，mysql的密码认证插件是&quot;mysql_native_password&quot;,现在使用的是&quot;caching_sha2_password&quot;</p>
-</blockquote>
-</li>
-<li>
-<h4 id="导入sql文件">导入sql文件</h4>
-<p>若使用navicat导入文件失败，可以使用以下代码</p>
-<pre><code>  mysql -uroot -p 数据库名 &lt; xxx.sql</code></pre>
-</li>
-</ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[docker常用命令]]></title>
-        <id>https://insistandinsist.github.io/post/docker-chang-yong-ming-ling</id>
-        <link href="https://insistandinsist.github.io/post/docker-chang-yong-ming-ling">
-        </link>
-        <updated>2019-11-14T15:26:23.000Z</updated>
-        <content type="html"><![CDATA[<ul>
-<li>
-<h4 id="拉镜像">拉镜像</h4>
-<pre><code>docker pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g
-</code></pre>
-</li>
-<li>
-<h4 id="创建容器信息">创建容器信息</h4>
-<pre><code>docker run -d -p 1521:1521 --name oracle_11g registry.aliyuncs.com/helowin/oracle_11g
-</code></pre>
-</li>
-<li>
-<h4 id="进入容器shell">进入容器shell</h4>
-<pre><code>docker exec -it oracle_11g bash
-</code></pre>
-</li>
-<li>
-<h4 id="运行">运行</h4>
-<pre><code>docker start oracle_11g</code></pre>
-</li>
-</ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://insistandinsist.github.io/post/hello-gridea</id>
-        <link href="https://insistandinsist.github.io/post/hello-gridea">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
-]]></content>
-    </entry>
-</feed>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://insistandinsist.github.io/tag/aNs2tGOAZ" class="tag">
+                    MacBook
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://insistandinsist.github.io/post/oracle-chang-yong-zong-jie">
+                  <h3 class="post-title">
+                    oracle常用总结
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'ecd26cc90ea7797d9135',
+        clientSecret: 'fe3c2e9c4aad4d1d7dc3557545b51aeacb0a7195',
+        repo: 'insistandinsist.github.io',
+        owner: 'insistandinsist',
+        admin: ['insistandinsist'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
