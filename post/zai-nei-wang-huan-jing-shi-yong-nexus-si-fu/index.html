@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>解决excel打开csv文件时乱码的问题 | moofie&#39;s blog</title>
+<title>在内网环境使用nexus私服 | moofie&#39;s blog</title>
 <meta name="description" content="">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -98,24 +98,116 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">解决excel打开csv文件时乱码的问题</h2>
-            <div class="post-date">2020-07-02</div>
+            <h2 class="post-title">在内网环境使用nexus私服</h2>
+            <div class="post-date">2020-07-13</div>
             
             <div class="post-content">
-              <h4 id="excel直接打开csv文件可能会出现乱码即使csv已经是正确的编码如utf-8">excel直接打开csv文件可能会出现乱码，即使csv已经是正确的编码（如utf-8）。</h4>
+              <ul>
+<li>
+<h4 id="前言">前言</h4>
+<p>最近折腾了下在纯内网环境中架设nexus私服，终于可以在内网中愉快的使用maven了~</p>
+</li>
+<li>
+<h4 id="搭建">搭建</h4>
+<p>在<a href="https://www.sonatype.com/download-oss-sonatype">这里</a>输入邮箱，点击下一步，根据你的操作系统选择下载</p>
+<p>解压，cd到bin目录，接下来根据操作系统步骤稍有不同:</p>
+<p>windows:</p>
+<pre><code>//启动后会生成一个服务，以后通过任务管理器停止/开始服务即可
+nexus start
+</code></pre>
+<p>macOS、linux:</p>
+<pre><code>//启动
+./nexus start
+
+//停止
+./nexus stop
+
+//重启
+./nexus restart
+</code></pre>
+<p>成功后，nexus默认部署在http://127.0.0.1:8081上</p>
+<p>点击sign in，用户名admin，密码根据提示到目录里找，为一串随机生成的字符串</p>
+<p>登录后根据提示修改用户名/密码</p>
+<p>由于nexus默认的远程仓库地址在国外，国内访问速度不佳，推荐修改为阿里云的:</p>
+<p>点击上方的设置图标，在Repository节点找到Repositories，然后在右侧找到maven-central，点击进入配置</p>
+<p>在Proxy--Remote storage中输入:http://maven.aliyun.com/nexus/content/groups/public/</p>
+<p>至此搭建完成</p>
+</li>
+<li>
+<h4 id="客户端上的配置">客户端上的配置</h4>
+<p>在项目中的pom.xml或者全局的settings.xml中修改均可，推荐后者，<a href="https://gist.github.com/insistandinsist/2459fc3bd4be187f99eee0579914cd3a">这里</a>给出一份settings.xml供参考</p>
+</li>
+<li>
+<h4 id="迁移数据">迁移数据</h4>
+<p>nexus服务器建好了，若需要在纯内网环境中使用，需要从一台可访问外网、且仓库中有jar包等数据的私服上拷贝备份过来</p>
 <ul>
-<li>原因：excel无法识别到该编码，文件头需要加入BOM标识。</li>
-<li>解决方法：由于该字符无法直接输入，下载notepad++,将文件转存为utf-8(带BOM)即可。</li>
+<li>
+<p>外网端</p>
+<p>根据<a href="https://help.sonatype.com/repomanager3/backup-and-restore/prepare-a-backup">官网</a>,完整的备份包含3个步骤：</p>
+<ul>
+<li>
+<p>Blob Store备份<br>
+拷贝<code>/安装目录/blobs/</code>下的所有文件</p>
+</li>
+<li>
+<p>Node ID备份<br>
+拷贝<code>/安装目录/keystores/node/</code>下的所有文件(第一次备份时需执行，以后可忽略)</p>
+</li>
+<li>
+<p>Database备份<br>
+访问http://127.0.0.1:8081,sign in后点击设置</p>
+<p>在左侧菜单中找到System--Tasks，点击Create task</p>
+<p>选择 Admin- Export databases for backup</p>
+<p>填入相应信息，创建完成后run manual，即可在制定目录中生成几个.bak文件</p>
+</li>
+</ul>
+</li>
+<li>
+<p>内网端</p>
+<ul>
+<li>
+<p>Blob Store<br>
+删除<code>/安装目录/blobs/</code>下的所有文件，拷贝</p>
+</li>
+<li>
+<p>Node ID<br>
+删除<code>/安装目录/keystores/node/</code>下的所有文件，拷贝(第一次备份时需执行，以后可忽略)</p>
+</li>
+<li>
+<p>Database<br>
+删除<code>/安装目录/db/</code>下的以下文件夹：</p>
+<pre><code>component
+config
+security
+</code></pre>
+<p>将.bak文件拷贝到<code>/安装目录/restore-from-backup</code>(在3.10.0或更早版本中是<code>/安装目录/backup</code>)</p>
+</li>
+<li>
+<p>重启服务器</p>
+<p>数据迁移完成</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
             </div>
             
+              <div class="tag-container">
+                
+                  <a href="https://insistandinsist.github.io/tag/C-L3uGqqR" class="tag">
+                    java
+                  </a>
+                
+              </div>
+            
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://insistandinsist.github.io/post/tong-guo-js-huo-qu-frame-nei-de-yuan-su">
+                <a href="https://insistandinsist.github.io/post/jie-jue-excel-da-kai-csv-wen-jian-shi-luan-ma-de-wen-ti">
                   <h3 class="post-title">
-                    通过js获取frame内的元素
+                    解决excel打开csv文件时乱码的问题
                   </h3>
                 </a>
               </div>
