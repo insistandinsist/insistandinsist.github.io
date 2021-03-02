@@ -2,13 +2,96 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://insistandinsist.github.io</id>
     <title>moofie&apos;s blog</title>
-    <updated>2020-07-13T09:48:13.886Z</updated>
+    <updated>2021-03-02T08:59:55.707Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://insistandinsist.github.io"/>
     <link rel="self" href="https://insistandinsist.github.io/atom.xml"/>
     <logo>https://insistandinsist.github.io/images/avatar.png</logo>
     <icon>https://insistandinsist.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, moofie&apos;s blog</rights>
+    <rights>All rights reserved 2021, moofie&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[h5原生打印方案]]></title>
+        <id>https://insistandinsist.github.io/post/h5-yuan-sheng-da-yin-fang-an</id>
+        <link href="https://insistandinsist.github.io/post/h5-yuan-sheng-da-yin-fang-an">
+        </link>
+        <updated>2021-03-02T08:08:42.000Z</updated>
+        <content type="html"><![CDATA[<ul>
+<li>
+<h4 id="方案1在css中使用media-print">方案1:在css中使用@media print</h4>
+<pre><code>@media print {
+    #toPrint {
+        background-color: white;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+        padding: 15px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+}
+</code></pre>
+<p>大致思路是，将欲打印元素盖住其他元素，设置背景为白色。由于@media print只会在点击打印时生效，因此正常浏览页面时该样式不会对页面造成影响。</p>
+<p>但是该方案有2个弊端：</p>
+<ul>
+<li>
+<p>当父级页面同样有position: fixed样式时，无法隐藏所有的其他元素（可能设置z-index可以解决？）</p>
+</li>
+<li>
+<p>同样是position: fixed的问题，打印时无法只能打印一页，其他页会显示不全，试了多种方法无法解决，只好放弃，如果哪位有解决方法请告知。</p>
+</li>
+</ul>
+</li>
+<li>
+<h4 id="方案2临时覆盖打印">方案2:临时覆盖打印</h4>
+<pre><code>print() {
+  let toPrint = document.getElementById(&quot;toPrint&quot;);
+  let newContent = toPrint.innerHTML;
+  let oldContent = document.body.innerHTML;
+  document.body.innerHTML = newContent;
+  window.print();
+  window.location.reload();
+  document.body.innerHTML = oldContent;
+  return false;
+}
+</code></pre>
+<p>该方案同样有2个弊端：</p>
+<ul>
+<li>
+<p>打印完成后会刷新页面。但对我而言这个影响较小，忽略。</p>
+</li>
+<li>
+<p>当打印内容中包含图片，图片往往显示不出来，原因是调出浏览器打印窗口时，所有的网络请求会被阻断。</p>
+</li>
+</ul>
+<p>网上找了一圈，没有找到合适的方法，最后采用预先将图片转为Base64的方案：</p>
+<pre><code>getBase64(imgUrl){
+  var xhr=new XMLHttpRequest();
+  xhr.open(&quot;get&quot;,imgUrl,true);
+  xhr.responseType=&quot;blob&quot;;
+  //如果需要带上cookie,设置为true
+  xhr.withCredentials=true;
+  xhr.onload=()=&gt;{
+    if(xhr.status==200){
+      var blob=xhr.response;
+      let fileReader=new FileReader();
+      fileReader.readAsDataURL(blob);
+      fileReader.onloadend=(e)=&gt;{
+        //这里就是img的src地址
+        this.formData.empPicture=e.target.result;
+      }
+    }
+  }
+  xhr.send();
+}
+</code></pre>
+<p>打印前先将图片地址转为Base64，打印时就不会再请求后端，完美显示图片。</p>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[在内网环境使用nexus私服]]></title>
         <id>https://insistandinsist.github.io/post/zai-nei-wang-huan-jing-shi-yong-nexus-si-fu</id>
